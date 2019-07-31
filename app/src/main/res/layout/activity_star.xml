@@ -4,34 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:gravity="center"
-    android:padding="12dp"
     android:orientation="vertical"
+    android:padding="12dp"
     tools:context=".StartActivity">
 
     <ImageView
         android:layout_width="316dp"
         android:layout_height="247dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/Logo" />
+        android:src="@drawable/logo" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
         android:id="@+id/login"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorPrimary"
-        android:background="@drawable/button_background"/>
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:id="@+id/register"
         android:layout_marginTop="15dp"
-        android:textColor="@color/colorPrimary"
-        android:background="@drawable/button_background"/>
+        android:background="@drawable/button_background"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_background"
+        android:text="Registrarse"
+        android:textColor="@color/colorPrimary" />
 
 
 </LinearLayout>

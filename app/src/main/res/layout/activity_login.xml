@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#FFFFFF"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="10dp"
     tools:context=".LoginActivity">
 
@@ -13,36 +14,36 @@
         android:layout_width="316dp"
         android:layout_height="247dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/Logo" />
+        android:src="@drawable/logo" />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Email"
-        android:layout_marginTop="15dp"
         android:inputType="textEmailAddress"
-        android:id="@+id/email"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Contraseña"
-        android:layout_marginTop="15dp"
         android:inputType="textPassword"
-        android:id="@+id/password"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login"
-        android:text="Iniciar Sesion"
-        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
-        android:layout_marginTop="15dp"/>
+        android:text="Iniciar Sesion"
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/txt_signup"
@@ -50,8 +51,6 @@
         android:layout_height="204dp"
         android:layout_marginTop="10dp"
         android:text="¿No tienes una cuenta? Regístrate" />
-
-
 
 
 </LinearLayout>
