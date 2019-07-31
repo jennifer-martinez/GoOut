@@ -25,7 +25,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:background="?android:attr/windowBackground"
-          android:backgroundTint="#7EFD7A"
+          android:backgroundTint="#FC8CC54A"
           app:itemIconTint="@color/selector"
           app:labelVisibilityMode="unlabeled"
           app:menu="@menu/bottom_navigation" />

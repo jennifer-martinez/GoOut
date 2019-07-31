@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "939921766846",
+    "firebase_url": "https://goout-c66fc.firebaseio.com",
+    "project_id": "goout-c66fc",
+    "storage_bucket": "goout-c66fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939921766846:android:c205e74327e93c94",
+        "android_client_info": {
+          "package_name": "com.example.goout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939921766846-n6an03p1bg8i0u0hun3mcphg1e9vehci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goout",
+            "certificate_hash": "f84375bdb2ac0759eef563d0a2034967770a9fb0"
+          }
+        },
+        {
+          "client_id": "939921766846-5ui08vncl2p4bn1vgckkc0066m3opb2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDv_1HVd7_7W_JDj-o8kDo4tzP1apNeOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939921766846-5ui08vncl2p4bn1vgckkc0066m3opb2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
