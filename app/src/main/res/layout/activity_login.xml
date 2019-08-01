@@ -14,16 +14,16 @@
         android:layout_width="316dp"
         android:layout_height="247dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/goout" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_email"
         android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Email"
-        android:drawableLeft="@drawable/ic_email"
         android:inputType="textEmailAddress"
         android:padding="10dp" />
 
@@ -31,8 +31,8 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:drawableLeft="@drawable/ic_password"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Contraseña"
         android:inputType="textPassword"

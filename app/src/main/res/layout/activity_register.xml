@@ -14,7 +14,9 @@
         android:layout_width="316dp"
         android:layout_height="247dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/goout" />
+
+
 
     <EditText
         android:id="@+id/username"
@@ -26,12 +28,14 @@
         android:hint="Nombre usuario"
         android:padding="10dp" />
 
+
+
     <EditText
         android:id="@+id/fullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:drawableLeft="@drawable/ic_usuario"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Nombre completo"
         android:padding="10dp" />
@@ -40,8 +44,8 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:drawableLeft="@drawable/ic_email"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
         android:hint="Email"
         android:inputType="textEmailAddress"
