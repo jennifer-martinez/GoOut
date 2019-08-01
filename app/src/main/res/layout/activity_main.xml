@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
+
     <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom"
-        android:id="@+id/fragment_container"/>
+         />
 
 
 
@@ -25,7 +29,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:background="?android:attr/windowBackground"
-          android:backgroundTint="#7EFD7A"
+          android:backgroundTint="#8DBE53"
           app:itemIconTint="@color/selector"
           app:labelVisibilityMode="unlabeled"
           app:menu="@menu/bottom_navigation" />
