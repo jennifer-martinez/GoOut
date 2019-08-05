@@ -96,7 +96,7 @@ public class PostActivity extends AppCompatActivity {
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if(!task.isCanceled()){
+                    if(!task.isSuccessful()){
 
                         throw task.getException();
                     }
