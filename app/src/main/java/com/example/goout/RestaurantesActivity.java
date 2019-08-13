@@ -1,111 +1,147 @@
 package com.example.goout;
 
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.widget.Adapter;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.goout.Adapter.RestauranteAdapter;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.goout.Model.Restaurants;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
-public class RestaurantesActivity extends AppCompatActivity {
-
-    ArrayList<HashMap<String,String>> arrayList = new ArrayList<HashMap<String, String>>();
-    ScriptGroup.Binding bind;
-    Adapter adapter;
-
-    private RecyclerView recyclerView;
-    private RestauranteAdapter restauranteAdapter;
+public class RestaurantesActivity extends Fragment {
 
 
-
-    String url ="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJrTLr-GyuEmsRBfy61i59si0&key=AIzaSyCKvCPavYDhPyDcXHULrSoc6V0n4SjOPpw";
-
-    //String url ="https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyCKvCPavYDhPyDcXHULrSoc6V0n4SjOPpw&placeid=";
-
-    //String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyCKvCPavYDhPyDcXHULrSoc6V0n4SjOPpw&query=Restaurantes";
-
-    //poltek+kediri&key=AIzaSyCKvCPavYDhPyDcXHULrSoc6V0n4SjOPpw
-
-    //String urlQuery = "restaurantes";
-
-   /* @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.activity_restaurantes, container, false);
+    RestauranteAdapter restauranteAdapter;
+    RecyclerView recyclerView;
+    List<Restaurants> mRestaurants;
 
 
-        recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-
-        return view;
-    }*/
-
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurantes);
 
-        //View view = (R.layout.activity_restaurantes);
 
-        //recyclerView = view.findViewById(R.id.recycler_view);
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        /*recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, jsonArraytListener, errorListener);
-        Volley.newRequestQueue(RestaurantesActivity.this).add(jsonObjectRequest);
+        mRestaurants = new ArrayList<>();
+        restauranteAdapter = new RestauranteAdapter(getBaseContext(),mRestaurants);
+        //restauranteAdapter = new RestauranteAdapter(getContext(), restaurantsList);
+        recyclerView.setAdapter(restauranteAdapter);
+
+        readUser();
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        mRestaurants = new ArrayList<>();
+        restauranteAdapter = new RestauranteAdapter(this,mRestaurants);
+        //restauranteAdapter = new RestauranteAdapter(getContext(), restaurantsList);
+        recyclerView.setAdapter(restauranteAdapter);
+
+        readUser();
+
+    }*/
+
+
+
+
+    @Override
+    public View onCreateView (LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+        //super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.activity_restaurantes, container, false);
+
+
+
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mRestaurants = new ArrayList<>();
+        restauranteAdapter = new RestauranteAdapter(getContext(), mRestaurants);
+        //restauranteAdapter = new RestauranteAdapter(getContext(), restaurantsList);
+        recyclerView.setAdapter(restauranteAdapter);
+
+        readUser();
+
+        //searchUsers("categorias");
+
+        return view;
+    }
+
+
+
+    private void searchUsers(String s){
+
+        Query query = FirebaseDatabase.getInstance().getReference("categorias");
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mRestaurants.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Restaurants rest = snapshot.getValue(Restaurants.class);
+                    mRestaurants.add(rest);
+                }
+                restauranteAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
-    Response.Listener<JSONObject> jsonArraytListener = new Response.Listener<JSONObject>() {
-        @Override
-        public void onResponse(JSONObject response) {
-            try {
-                String nombre= "", ubicacion="", horario ="", telefono="";
-                arrayList.clear();
-                JSONArray places = response.getJSONArray("results");
-                for(int i=0; i<places.length(); i++){
-                    JSONObject info = places.getJSONObject(i);
-                    nombre = info.getString("name");
-                    ubicacion = info.getString("formated_address");
-                    horario = info.getString("opening_hours");
-                    telefono = info.getString("formatted_phone_number");
 
-                    HashMap<String,String> hashMap = new HashMap<String, String>();
-                    hashMap.put("name", nombre);
-                    hashMap.put("formated_address", ubicacion);
-                    hashMap.put("opening_hours", horario);
-                    hashMap.put("formatted_phone_number", telefono);
-                    arrayList.add(hashMap);
 
+    private  void readUser(){
+
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("categorias").child("Restaurantes");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (!reference.toString().equals("")) {
+                    mRestaurants.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Restaurants rest = snapshot.getValue(Restaurants.class);
+                        mRestaurants.add(rest);
+                    }
+
+                    restauranteAdapter.notifyDataSetChanged();
                 }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
-        }
-    };
 
-    Response.ErrorListener errorListener = new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Toast.makeText(getBaseContext(), "error", Toast.LENGTH_LONG).show();;
-        }
-    };
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
 }

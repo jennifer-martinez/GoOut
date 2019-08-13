@@ -12,42 +12,54 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/image"/>
+            android:id="@+id/imagen"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:id="@+id/nombre"
             android:textAlignment="center"
+            android:layout_gravity="center"
             android:textStyle="bold"
+            android:textColor="@color/colorGreen"
             android:textSize="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ubicacion"
+            android:padding="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_ubicacion"
             android:textStyle="bold"
-            android:textSize="12dp"/>
+            android:textSize="14dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_horario"
-            android:id="@+id/horario"
+            android:id="@+id/horarios"
             android:textStyle="bold"
-            android:textSize="12dp"/>
+            android:textSize="14dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_telefono"
-            android:id="@+id/telefono"
+            android:id="@+id/telefonos"
             android:textStyle="bold"
-            android:textSize="12dp"/>
+            android:textSize="14dp"/>
 
 
 

@@ -24,7 +24,7 @@ public class GouOutFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_gou_out, container, false);
 
@@ -35,8 +35,17 @@ public class GouOutFragment extends Fragment {
         restaurantes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RestaurantesActivity.class);
-                getActivity().startActivity(intent);
+                RestaurantesActivity rest = new RestaurantesActivity();
+                rest.setArguments(savedInstanceState);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,rest )
+                        .addToBackStack(null)
+                        .commit();
+                //final int commit = getActivity().getSupportFragmentManager().beginTransaction()
+                       // .replace(R.id.fragment_container, new RestaurantesActivity()).commit();
+
+                //Intent intent = new Intent(getActivity(), RestaurantesActivity.class);
+                //getActivity().startActivity(intent);
             }
         });
 

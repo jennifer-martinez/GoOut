@@ -33,32 +33,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        
+
 
         img = view.findViewById(R.id.addimage);
 
-       //img = getView().findViewById(R.id.addimage);
 
-
-        /*img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (view.getId() == R.id.addimage){
-
-                    Intent intent = new Intent(getActivity(), PostActivity.class);
-                    getActivity().startActivity(intent);
-                }
-
-
-
-            }
-        });*/
-
-
-
-
-        //img = getView().findViewById(R.id.addimage);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
