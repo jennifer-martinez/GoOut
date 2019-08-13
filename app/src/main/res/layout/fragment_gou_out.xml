@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".Fragment.GouOutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="GouOut" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/restaurantes"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/restaurantes"/>
+
+        <ImageView
+            android:id="@+id/cafes"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/restaurantes"
+            android:background="@drawable/cafes" />
+        <ImageView
+            android:id="@+id/bares"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/cafes"
+            android:background="@drawable/bares" />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+
+
+

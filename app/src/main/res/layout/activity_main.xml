@@ -33,6 +33,7 @@
           android:id="@+id/bottom_navigation"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_alignStart="@+id/bottom"
           android:background="?android:attr/windowBackground"
           android:backgroundTint="#8DBE53"
           app:itemIconTint="@color/selector"

@@ -197,7 +197,7 @@ public class ProfileFragment extends Fragment {
 
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference()
                 .child("Seguir").child(profileid).child("Siguiendo");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 following.setText(""+dataSnapshot.getChildrenCount());

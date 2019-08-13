@@ -10,8 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.goout.Model.Post;
 import com.example.goout.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,8 +45,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        Post post = mPost.get(i);
 
+        Glide.with(mContext).load(post.getPostimage()).into(viewHolder.post_image);
+
+        if (post.getDescription().equals("")){
+            viewHolder.description.setVisibility(View.GONE);
+        } else {
+            viewHolder.description.setVisibility(View.VISIBLE);
+            viewHolder.description.setText(post.getDescription());
+        }
+
+        publisherInfo(viewHolder.image_profile, viewHolder.username, viewHolder.publisher, post.getPublisher());
     }
 
     @Override

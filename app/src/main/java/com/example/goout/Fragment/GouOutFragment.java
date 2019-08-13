@@ -1,26 +1,63 @@
 package com.example.goout.Fragment;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.goout.BaresActivity;
+import com.example.goout.CafesActivity;
 import com.example.goout.R;
+import com.example.goout.RestaurantesActivity;
 
 
 public class GouOutFragment extends Fragment {
 
 
+    ImageView restaurantes;
+    ImageView cafes;
+    ImageView bares;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gou_out, container, false);
+        View view = inflater.inflate(R.layout.fragment_gou_out, container, false);
+
+        restaurantes = view.findViewById(R.id.restaurantes);
+        cafes = view.findViewById(R.id.cafes);
+        bares = view.findViewById(R.id.bares);
+
+        restaurantes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RestaurantesActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        cafes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CafesActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        bares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BaresActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        return view;
+
     }
 
 

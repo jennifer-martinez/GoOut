@@ -8,13 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.goout.Adapter.PostAdapter;
+import com.example.goout.Model.Post;
 import com.example.goout.PostActivity;
 import com.example.goout.R;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     ImageView img;
+
+    private RecyclerView recyclerView;
+    private PostAdapter postAdapter;
+    private List<Post> postList;
+    private List<String> followingList;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -22,6 +32,8 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        
 
         img = view.findViewById(R.id.addimage);
 
@@ -58,18 +70,18 @@ public class HomeFragment extends Fragment {
 
 
 
+
         return view;
 
 
 
 
+
     }
 
-    public void Click(){
 
-        Intent intent = new Intent(getActivity(), PostActivity.class);
-                getActivity().startActivity(intent);
-    }
+
+
 
 
 
