@@ -26,9 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BaresActivity" />
 
-        <activity android:name=".CafesActivity" />
     </application>
 
 </manifest>

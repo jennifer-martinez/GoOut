@@ -30,7 +30,7 @@
                     android:textStyle="bold"
                     android:id="@+id/username"
                     android:textColor="@color/colorPrimaryDark"/>
-                
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:id="@+id/image_profile"/>
+                    android:id="@+id/image_profile" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -221,7 +221,7 @@
 
 
             </LinearLayout>
-            
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

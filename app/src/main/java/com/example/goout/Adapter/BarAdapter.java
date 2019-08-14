@@ -11,48 +11,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.goout.Model.Restaurants;
+import com.example.goout.Model.Bar;
 import com.example.goout.R;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.ViewHolder>  {
+public class BarAdapter extends RecyclerView.Adapter<BarAdapter.ViewHolder>  {
 
 
     private Context mContext;
-    private List<Restaurants> mRestaurante;
+    private List<Bar> mBar;
 
 
 
     private FirebaseDatabase firebaseDatabase;
 
-    public RestauranteAdapter(Context mContext, List<Restaurants> mRestaurante) {
+    public BarAdapter(Context mContext, List<Bar> mBar) {
         this.mContext = mContext;
-        this.mRestaurante = mRestaurante;
+        this.mBar = mBar;
 
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.restaurantes_item, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.bares_item, viewGroup, false);
 
-        return new RestauranteAdapter.ViewHolder(view);
+        return new BarAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        final Restaurants rest = mRestaurante.get(i);
+        final Bar bar = mBar.get(i);
 
-        viewHolder.nombre.setText(rest.getNombre());
-        viewHolder.ubicacion.setText(rest.getUbicacion());
-        viewHolder.horarios.setText(rest.getHorarios());
-        viewHolder.telefonos.setText(rest.getTelefonos());
-        viewHolder.info.setText(rest.getInfo());
+        viewHolder.nombre.setText(bar.getNombre());
+        viewHolder.ubicacion.setText(bar.getUbicacion());
+        viewHolder.horarios.setText(bar.getHorarios());
+        viewHolder.telefonos.setText(bar.getTelefonos());
+        viewHolder.info.setText(bar.getInfo());
 
-        Glide.with(mContext).load(rest.getImagen()).into(viewHolder.imagen);
+        Glide.with(mContext).load(bar.getImagen()).into(viewHolder.imagen);
         //Glide.with(mContext).load(rest.getImagen()).into(viewHolder.imagen);
 
 
@@ -68,7 +68,7 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
 
     @Override
     public int getItemCount() {
-        return mRestaurante.size();
+        return mBar.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

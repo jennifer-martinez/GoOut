@@ -1,6 +1,5 @@
 package com.example.goout.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,27 +40,31 @@ public class GouOutFragment extends Fragment {
                         .replace(R.id.fragment_container,rest )
                         .addToBackStack(null)
                         .commit();
-                //final int commit = getActivity().getSupportFragmentManager().beginTransaction()
-                       // .replace(R.id.fragment_container, new RestaurantesActivity()).commit();
 
-                //Intent intent = new Intent(getActivity(), RestaurantesActivity.class);
-                //getActivity().startActivity(intent);
             }
         });
 
         cafes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CafesActivity.class);
-                getActivity().startActivity(intent);
+                CafesActivity cafe = new CafesActivity();
+                cafe.setArguments(savedInstanceState);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,cafe )
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
         bares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BaresActivity.class);
-                getActivity().startActivity(intent);
+                BaresActivity bar = new BaresActivity();
+                bar.setArguments(savedInstanceState);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,bar )
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

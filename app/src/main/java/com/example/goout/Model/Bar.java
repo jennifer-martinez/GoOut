@@ -1,23 +1,33 @@
 package com.example.goout.Model;
 
-public class Restaurants {
+public class Bar {
 
     private String nombre;
     private String ubicacion;
     private String horarios;
-    private Long telefonos;
+    private String  telefonos;
     private String imagen;
+    private String info;
 
-    public Restaurants(String nombre, String ubicacion, String horarios, Long telefonos, String imagen) {
+    public Bar(String nombre, String ubicacion, String horarios, String telefonos, String imagen, String info) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.horarios = horarios;
         this.telefonos = telefonos;
         this.imagen = imagen;
+        this.info = info;
     }
 
-    public Restaurants(){
+    public Bar(){
 
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public String getImagen() {
@@ -52,11 +62,11 @@ public class Restaurants {
         this.horarios = horarios;
     }
 
-    public Long getTelefonos() {
+    public String getTelefonos() {
         return telefonos;
     }
 
-    public void setTelefonos(Long telefonos) {
+    public void setTelefonos(String telefonos) {
         this.telefonos = telefonos;
     }
 }
