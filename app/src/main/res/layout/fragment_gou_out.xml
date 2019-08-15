@@ -14,19 +14,19 @@
         <ImageView
             android:id="@+id/restaurantes"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="210dp"
             android:background="@drawable/restaurantes"/>
 
         <ImageView
             android:id="@+id/cafes"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="210dp"
             android:layout_below="@+id/restaurantes"
             android:background="@drawable/cafes" />
         <ImageView
             android:id="@+id/bares"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="210dp"
             android:layout_below="@+id/cafes"
             android:background="@drawable/bares" />
 
