@@ -1,6 +1,7 @@
 package com.example.goout.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.goout.Adapter.MyFotoAdapter;
+import com.example.goout.LoginActivity;
 import com.example.goout.Model.Post;
 import com.example.goout.Model.User;
 import com.example.goout.R;
@@ -40,6 +43,11 @@ public class ProfileFragment extends Fragment {
     TextView posts, followers, following, fullname, bio, username;
     Button edit_profile;
 
+    RecyclerView recyclerView;
+    MyFotoAdapter myFotoAdapter;
+    List<Post> postList;
+
+
     FirebaseUser firebaseUser;
     String profileid;
 
@@ -58,8 +66,18 @@ public class ProfileFragment extends Fragment {
      SharedPreferences prefs = getContext().getSharedPreferences("PREFS",Context.MODE_PRIVATE);
      profileid = prefs.getString("profileid","none");
 
-     image_profile = view.findViewById(R.id.image_profile);
+        image_profile = view.findViewById(R.id.image_profile);
         options = view.findViewById(R.id.options);
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                getActivity().stopLockTask();
+                getActivity().startActivity(intent);
+            }
+        });
+
         posts = view.findViewById(R.id.posts);
         followers = view.findViewById(R.id.followers);
         following = view.findViewById(R.id.following);
@@ -70,9 +88,19 @@ public class ProfileFragment extends Fragment {
         my_fotos = view.findViewById(R.id.my_fotos);
         saved_fotos = view.findViewById(R.id.saved_fotos);
 
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(),3 );
+        recyclerView.setLayoutManager(linearLayoutManager);
+        postList = new ArrayList<>();
+        myFotoAdapter = new MyFotoAdapter(getContext(),postList);
+        recyclerView.setAdapter(myFotoAdapter);
+
         userInfo();
         getFollowers();
         getNrPosts();
+        //checkFollow();
+        myFotos();
 
         if(profileid.equals(firebaseUser.getUid())){
             edit_profile.setText("Editar Perfil");
@@ -181,7 +209,7 @@ public class ProfileFragment extends Fragment {
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                followers.setText(""+dataSnapshot.getChildrenCount());
+                following.setText(""+dataSnapshot.getChildrenCount());
             }
 
             @Override
@@ -215,5 +243,35 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
+
     }
+
+
+    private void myFotos(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Post post = snapshot.getValue(Post.class);
+                    if(post.getPublisher().equals(profileid)){
+                        postList.add(post);
+                    }
+                }
+                Collections.reverse(postList);
+                myFotoAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+
 }
